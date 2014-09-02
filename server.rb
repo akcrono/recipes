@@ -35,22 +35,18 @@ def get_ingredients recipe_id
   end
 end
 
+
 get '/' do
   erb :index
 end
 
 get '/recipes' do
   @recipes = get_recipes.to_a
-
-
   erb :recipes
 end
 
 get '/recipe/:recipe_id' do
   @recipe = get_recipe(params[:recipe_id]).to_a.first
   @ingredients = get_ingredients(params[:recipe_id]).to_a
-
-
   erb :recipe
 end
-
